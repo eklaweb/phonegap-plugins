@@ -1,12 +1,14 @@
-This plugin allows you to leave the PhoneGap webview and enter into the native android date and time picker. 
-Once the user has selected time or date, they will be sent back into the PhoneGap webview with selected value available.
+This plugin has been updated to be used with more recent version of Phonegap: Cordova
+Added feature: you can now chose the default value to be shown in the date / time picker
 
+This plugin allows you to leave the Cordova webview and enter into the native android date and time picker.
+Once the user has selected time or date, they will be sent back into the PhoneGap webview with selected value available.
 
 How to use:
 
 Usage:
 
-window.plugins.datePickerPlugin.showDateOrTime(dataType,successCallback,errorCallback);
+window.plugins.datePickerPlugin.showDateOrTime(dataType,successCallback,errorCallback,timestamp);
 
 dataType argument takes two value: 
 	'date' : if you need the datePicker
@@ -23,10 +25,11 @@ Example:
 			function(r){
 				document.getElementById("mydatetargetfield").value = r.day + "/" + r.month + "/" + r.year;
 			},
-			function(e){console.log(e);}
+			function(e){console.log(e);},
+			(new Date()).getTime()
 		);
     }, false);
-	
+
 	document.querySelector("#mypickdatebutton").addEventListener("tap", function() {
 	    window.plugins.datePickerPlugin.showDateOrTime(
 			'time',
@@ -47,4 +50,3 @@ You can change this to whatever you like, just update the datePickerPlugin.js an
 datePickerPlugin.js should go in the asset folder and should be referenced in your index.html file.
 
 
-Limitations:
